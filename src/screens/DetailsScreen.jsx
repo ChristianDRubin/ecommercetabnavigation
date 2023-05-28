@@ -2,15 +2,16 @@ import { Button, Image, StyleSheet, Text, View } from "react-native";
 
 import {COLORS} from '../constants/colors';
 import React from "react";
+import { useSelector } from "react-redux";
 
-const DetailsScreen = ({ route }) => {
-  const bread = route.params.product;  
+const DetailsScreen = () => {
+  const product = useSelector(state=>state.products.selected);
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{bread.name}</Text>
-      <Text style={styles.description}>{bread.description}</Text>      
-        <Image style={styles.image} source={{ uri: bread.img }}/>
-      <Text style={styles.price}>${bread.price}</Text>
+      <Text style={styles.title}>{product.name}</Text>
+      <Text style={styles.description}>{product.description}</Text>
+        <Image style={styles.image} source={{ uri: product.img }}/>
+      <Text style={styles.price}>${product.price}</Text>
       <Button title="Add to cart" color={COLORS.primaryDark} />
     </View>
   );
