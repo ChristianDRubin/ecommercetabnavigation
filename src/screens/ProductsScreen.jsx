@@ -19,13 +19,6 @@ const ProductsScreen = ({ navigation }) => {
     dispatch(filterProducts(category.id));
   }, []);
   
-
-  const renderProductItem = ({ item }) => (
-    <View style={styles.productItem}>
-      <ProductsItem item={item} onSelected={handleSelectedProduct} />
-    </View>
-  );
-
   const handleSelectedProduct = item => {
     dispatch(selectProduct(item.id));
     navigation.navigate("Details", {
@@ -33,6 +26,14 @@ const ProductsScreen = ({ navigation }) => {
       name: item.name,
     });
   };
+
+  const renderProductItem = ({ item }) => (
+    <View style={styles.productItem}>
+      <ProductsItem item={item} onSelected={handleSelectedProduct} />
+    </View>
+  );
+
+
 
   return (
     <View style={styles.container}>
